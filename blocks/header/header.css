@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  margin: 48px auto 0;
+  border-bottom: 1px solid #545454;
+  height: 74px;
+  flex-direction: column;
+  outline: 1px solid green;
+}
+
+@media all and (max-width: 420px) {
+  .header {
+    height: 56px;
+    margin-top: 28px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
