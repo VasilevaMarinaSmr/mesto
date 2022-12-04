@@ -1,0 +1,5 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  outline: 1px solid rgb(20, 66, 218);
+}

@@ -4,7 +4,7 @@
   border-bottom: 1px solid #545454;
   height: 74px;
   flex-direction: column;
-  outline: 1px solid green;
+
 }
 
 @media all and (max-width: 420px) {
