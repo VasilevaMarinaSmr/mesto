@@ -1,0 +1,9 @@
+.profile__add-buttonxxx {
+  background-image: url("../../../images/edit-button.svg");
+  padding-left : 32px;
+  padding-top : 10px;
+  padding-bottom : 10px;
+  background-repeat : no-repeat;
+  background-color: #FFFFFF;
+
+}

@@ -1,0 +1,9 @@
+.profile-info {
+  display: flex;
+  flex-direction: column; 
+  outline: 1px solid yellow;
+  padding-left: 30px;
+  padding-top: 22px;
+
+
+}
