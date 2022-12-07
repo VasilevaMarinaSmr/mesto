@@ -5,5 +5,8 @@
     border: none;
     background-repeat : no-repeat;
     border: 1px solid #fff;
-    background-color: rgba(0, 0, 0, 1);  
+    background-color: rgba(0, 0, 0, 0);
+    background-position: center;
+    margin-left: 18px
+
   }
