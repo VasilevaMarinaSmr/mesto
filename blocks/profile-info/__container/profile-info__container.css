@@ -1,6 +1,5 @@
 .profile-info__container {
     display: flex;
     flex-direction: row;
-    outline: 1px solid red;
     align-items: baseline;
   }

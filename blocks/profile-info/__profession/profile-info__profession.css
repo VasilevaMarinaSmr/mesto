@@ -2,10 +2,30 @@
   display: flex;
   margin: 0;
   padding: 0;
+  max-width: 450px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 22px;
-  padding-top: 16px;
+  padding-top: 8px;
+  line-height: 21.78px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+@media screen and (max-width: 700px) {
+  .profile-info__profession {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .profile-info__profession {
+
+    height: 14px;
+  }
 }
