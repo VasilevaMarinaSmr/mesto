@@ -1,0 +1,29 @@
+.form-popup__save {
+  display: block;
+  margin: auto;
+  border: none;
+  text-align: center;
+  min-width: 358px;
+  min-height: 50px;
+  border-radius: 2px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #000000;
+  }
+  
+.form__save:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+    
+@media screen and (max-width: 690px) {
+  .form-popup__save {
+    font-size: 14px;
+    line-height: 17px;
+    min-width: 238px;
+    min-height: 46px;
+  }
+}
+  

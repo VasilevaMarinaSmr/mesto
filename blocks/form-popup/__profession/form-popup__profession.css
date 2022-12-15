@@ -1,0 +1,19 @@
+.form-popup__profession {
+    display: block;
+    margin: auto;
+    border: none;
+    width: 358px;    
+    padding-bottom: 13px;
+    min-height: 27px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    border-bottom: 1px rgba(0, 0, 0, 0.2) solid;    
+  }
+  
+  @media screen and (max-width: 700px) {
+    .form-popup__profession{
+      width: 238px;
+    }
+  }
+  
