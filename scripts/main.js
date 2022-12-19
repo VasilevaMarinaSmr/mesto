@@ -5,4 +5,4 @@ let nameProfile = document.querySelector(".profile-info__name");
 let professionProfile = document.querySelector(".profile-info__profession");
 inputPopupName.value = nameProfile.textContent
 inputPopupProfession.value = professionProfile.textContent
-popup.classList.add('popup_opened');
+// popup.classList.add('popup_opened');

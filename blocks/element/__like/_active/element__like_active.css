@@ -1,0 +1,8 @@
+.element__like_active {
+  all: unset;
+  border: none;
+  margin: 5px 5px 1px 0;
+  background-image: url(../../../../images/herz_active.svg);
+  width: 22px;
+  height: 19px;
+}
