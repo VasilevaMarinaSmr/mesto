@@ -1,6 +1,5 @@
 .form-popup__save {
   display: block;
-  margin: auto;
   border: none;
   text-align: center;
   min-width: 358px;
@@ -11,9 +10,10 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  color: #FFFFFF;
-  background-color: #000000;
+  color: #fff;
+  background-color: #000;
   margin-top: 48px;
+  width: 100%;
   }
 
 .form__save:hover {
@@ -26,5 +26,6 @@
     line-height: 17px;
     min-width: 238px;
     min-height: 46px;
+    margin-top: 45px;
   }
 }
