@@ -32,7 +32,5 @@
 @import url(../blocks/form-popup/__text/form-popup__text.css);
 @import url(../blocks/form-popup/__text/_name/form-popup__text_name.css);
 @import url(../blocks/form-popup/__text/_profession/form-popup__text_profession.css);
-@import url(../blocks/form-popup/__name/form-popup__name.css);
-@import url(../blocks/form-popup/__profession/form-popup__profession.css);
 @import url(../blocks/form-popup/__save/form-popup__save.css);
 @import url(../blocks/popup/_opened/popup_opened.css);

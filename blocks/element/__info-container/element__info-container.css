@@ -1,7 +1,6 @@
 .element__info-container {
   display: flex;
   width: 246px;
-  max-height: 40px;
   padding: 25px 15px 31px 21px;
   flex-direction: row;
   justify-content: space-between;

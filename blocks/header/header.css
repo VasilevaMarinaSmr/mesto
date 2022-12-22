@@ -1,14 +1,14 @@
 .header {
   display: flex;
   margin: 48px auto 0;
-  border-bottom: 1px solid #545454;
-  height: 74px;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  min-height: 74px;
   flex-direction: column;
 }
 
 @media all and (max-width: 420px) {
   .header {
-    height: 56px;
+    min-height: 56px;
     margin-top: 28px;
     padding-left: 0px;
     padding-right: 0px;

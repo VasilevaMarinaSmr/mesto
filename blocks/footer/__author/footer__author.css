@@ -6,16 +6,12 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  color: #545454;
-  max-height: 18px;
-  width: 318px;
-  width: 282px;
+  color: rgb(84,84,84);
 }
 
 @media screen and (max-width: 700px) {
   .footer__author {
     font-size: 14px;
     line-height: 17px;
-    max-height: 14px;
     }
 }

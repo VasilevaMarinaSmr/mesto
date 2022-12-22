@@ -13,6 +13,7 @@
   background-color: #000;
   margin-top: 48px;
   width: 100%;
+  cursor: pointer;
   }
 
 .form-popup__save:hover {
