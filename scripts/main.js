@@ -48,22 +48,28 @@ function closePopup() {
   popupWindow.classList.remove('popup_opened');
 }
 
-function createElementCard(name, link, template=cardTemplate){
-  const card = template.content.cloneNode(true);
+function createElementCard(name, link){
+  const card = cardTemplate.content.cloneNode(true);
+  const pushBtnLike = card.querySelector('.element__like');
+  const pushBtnTrash = card.querySelector('.element__trash');
 
-  const likeBtn = card.querySelector('.photo-grid__like');
-  likeBtn.addEventListener('click', function(evt){
-    evt.target.classList.toggle('photo-grid__like_active');
+  card.querySelector('.element__image').src = link;
+  card.querySelector('.element__image').alt = name;
+  card.querySelector('.element__name').textContent = name;
+
+  pushBtnLike.addEventListener('click', function(evt){
+    evt.target.classList.toggle('element__like_active');
   })
 
-  const trashBtn = card.querySelector('.photo-grid__trash');
-  trashBtn.addEventListener('click', function(){
-    trashBtn.closest('.photo-grid__element').remove();
+  pushBtnTrash.addEventListener('click', function(){
+    pushBtnTrash.closest('.element').remove();
   })
+
+  return card;
 }
 
-function addCard(name, link, place=listElements){
-  place.prepend(createElementCard(name, link))
+function addCard(name, link){
+  listElements.prepend(createElementCard(name, link))
 }
 
 
