@@ -34,6 +34,8 @@ let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
 let profileOpenPopupBtn = document.querySelector('.profile__edit-button');
 let popupCloseBtn = popupWindow.querySelector('.popup__button-close');
+const listElements = document.querySelector('.elements__list');
+const cardTemplate = document.querySelector('.element-template');
 
 
 function openPopup() {
@@ -45,6 +47,34 @@ function openPopup() {
 function closePopup() {
   popupWindow.classList.remove('popup_opened');
 }
+
+function createElementCard(name, link, template=cardTemplate){
+  const card = template.content.cloneNode(true);
+
+  const likeBtn = card.querySelector('.photo-grid__like');
+  likeBtn.addEventListener('click', function(evt){
+    evt.target.classList.toggle('photo-grid__like_active');
+  })
+
+  const trashBtn = card.querySelector('.photo-grid__trash');
+  trashBtn.addEventListener('click', function(){
+    trashBtn.closest('.photo-grid__element').remove();
+  })
+}
+
+function addCard(name, link, place=listElements){
+  place.prepend(createElementCard(name, link))
+}
+
+
+function fillCards(cards){
+  cards.forEach((card) => {
+    addCard(card.name, card.link);
+  })
+}
+
+fillCards(initialCards);
+
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
