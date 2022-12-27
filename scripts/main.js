@@ -122,9 +122,10 @@ function handleFormEditProfileSubmit(evt) {
 
 function handleFormАddImageSubmit(evt) {
   evt.preventDefault();
-  imageName=popupInputImageName.value
-  link = popupInputLink.value
-  addCard(imageName, link)
+  imageName=popupInputImageName.value;
+  link = popupInputLink.value;
+  addCard(imageName, link);
+  popupFormAddImage.reset();
   closePopup(popupWindowAddImage); 
 }
 
