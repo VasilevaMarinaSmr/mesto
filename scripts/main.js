@@ -25,7 +25,6 @@ const initialCards = [
   }
 ];
 
-
 const popupWindowEditProfile = document.querySelector('.popup_form_edit-profile');
 const popupWindowAddImage = document.querySelector('.popup_form_add-image');
 const popupWindowBigPicture = document.querySelector('.popup_form_big-picture');
@@ -104,9 +103,6 @@ function fillCards(cards){
   })
 }
 
-fillCards(initialCards);
-
-
 function getProfileInfo(popup) {
   openPopup(popup);
   popupInputName.value = profileName.textContent
@@ -126,17 +122,21 @@ function handleFormАddImageSubmit(evt) {
   link = popupInputLink.value;
   addCard(imageName, link);
   popupFormAddImage.reset();
-  closePopup(popupWindowAddImage); 
+  closePopup(popupWindowAddImage);
 }
+
+fillCards(initialCards);
 
 profileOpenPopupEditProfileBtn.addEventListener('click', function(){
   getProfileInfo(popupWindowEditProfile)
   }
 );
+
 popupEditProfileCloseBtn.addEventListener('click', function(){
   closePopup(popupWindowEditProfile)
   }
 );
+
 popupFormEditProfile.addEventListener('submit',handleFormEditProfileSubmit);
 
 profileOpenPopupAddImageBtn.addEventListener('click', function(){
