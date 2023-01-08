@@ -55,12 +55,29 @@ const popupBigPictureDescription = popupWindowBigPicture.querySelector('.popup__
 const listElements = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('.element-template');
 
+const popups = Array.from(document.querySelectorAll('.popup'));
+
+function handleDownEsc(evt){
+  if (evt.key === 'Escape') {
+    const activPopup = document.querySelector('.popup_opened');
+    closePopup(activPopup);
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handleDownEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handleDownEsc);
+}
+
+function closePopupClickOnOverlay(evt, popup){
+  if (evt.target === evt.currentTarget){
+    closePopup(popup);
+  }
 }
 
 function showPopupBigPicture(name, link){
@@ -155,3 +172,10 @@ popupBigPictureCloseBtn.addEventListener('click', function(){
 );
 
 popupFormAddImage.addEventListener('submit', handleFormАddImageSubmit);
+
+
+popups.forEach(popup => {
+  popup.addEventListener('click', (evt) => {
+    closePopupClickOnOverlay(evt, popup)
+  });
+});
