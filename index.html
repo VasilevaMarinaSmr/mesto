@@ -37,11 +37,14 @@
       <div class="popup__container">
         <button class="popup__button-close popup__button-close_edit_profile" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="update-info" class="form-popup form-popup_edit-profile">
+        <form name="update-info" class="form-popup form-popup_edit-profile" novalidate>
           <fieldset class="form-popup__profile-info">
-            <input name="update-name" type="text" id="Popup_form_name" class="form-popup__text form-popup__text_modified_name">
-            <input name="update-profession" type="text" id="Popup_form_profession"
+            <input name="update-name" type="text" id="name" minlength="2" maxlength="40"
+            class="form-popup__text form-popup__text_modified_name">
+            <span id="name-error" class="form-popup__error name-error"></span>
+            <input name="update-profession" type="text" id="profession" minlength="2" maxlength="200"
               class="form-popup__text form-popup__text_modified_profession">
+            <span id="profession-error" class="form-popup__error profession-error"></span>
           </fieldset>
           <button class="form-popup__save" type="submit">Сохранить</button>
         </form>
@@ -52,13 +55,15 @@
       <div class="popup__container">
         <button class="popup__button-close popup__button-close_add_image" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form name="update-image" class="form-popup form-popup_add-image">
+        <form name="update-image" class="form-popup form-popup_add-image" novalidate>
           <fieldset class="form-popup__profile-info">
-            <input name="update-image-name" type="text" required
+            <input name="update-image-name" type="text" minlength="2" maxlength="30" id="place"
             class="form-popup__text form-popup__text_modified_image" placeholder="Название">
-            <input name="update-link" type="url" required
+            <span id="plaсe-error" class="form-popup__error place-error"></span>
+            <input name="update-link" type="url" id="link" required
             class="form-popup__text form-popup__text_modified_link"
             placeholder="Ссылка на картинку">
+            <span id="link-error" class="form-popup__error link-error"></span>
           </fieldset>
           <button class="form-popup__save" type="submit">Создать</button>
         </form>
@@ -83,6 +88,7 @@
         </div>
       </li>
     </template>
-  <script src="./scripts/main.js"></script>
+  <script src="./scripts/main.js" defer></script>
+  <script src="./scripts/validate.js" defer></script>
   </body>
 </html>
