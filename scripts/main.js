@@ -32,8 +32,6 @@ const popupWindowBigPicture = document.querySelector('.popup_form_big-picture');
 let popupFormEditProfile = document.querySelector('.form-popup_edit-profile');
 let popupFormAddImage = document.querySelector('.form-popup_add-image');
 
-
-
 let popupInputName = document.querySelector('.form-popup__text_modified_name');
 let popupInputProfession = document.querySelector('.form-popup__text_modified_profession');
 let popupInputImageName = document.querySelector('.form-popup__text_modified_image');

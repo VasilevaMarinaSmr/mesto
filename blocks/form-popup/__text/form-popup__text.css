@@ -1,15 +1,17 @@
 .form-popup__text{
   display: block;
   margin: 0;
-  padding: 29px 0 0;
+  padding: 0;
   border: none;
   width: 358px;
   min-height: 27px;
   font-family: "Inter", "Arial", sans-serif;
   font-weight: normal;
+  font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+  box-sizing: border-box;
 }
 .form-popup__text:first-of-type{
   padding: 0;

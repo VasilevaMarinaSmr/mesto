@@ -5,7 +5,6 @@ function showInputError(formElement, inputElement, errorMessage, classesModifica
   errorElement.classList.add(classesModification.errorClass);
 };
 
-
 function hideInputError(formElement, inputElement, classesModification) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(classesModification.inputErrorClass);
@@ -27,7 +26,7 @@ function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
   }
 };
 
-const checkInputValidity = (formElement, inputElement, classesModification) => {
+function checkInputValidity(formElement, inputElement, classesModification) {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, classesModification);
   } else {
@@ -35,20 +34,17 @@ const checkInputValidity = (formElement, inputElement, classesModification) => {
   }
 };
 
-
 function enableValidation(classesModification){
   const formsPopup = Array.from(document.querySelectorAll(classesModification.formSelector));
-  // Обходим формы
   formsPopup.forEach((formPopup) => {
     const inputList = Array.from(formPopup.querySelectorAll(classesModification.inputSelector));
     formPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
-
     inputList.forEach(inputElement => {
       inputElement.setAttribute('required', true);
       const submitButton = formPopup.querySelectorAll(classesModification.submitButtonSelector)
-      console.log(submitButton)
+      toggleButtonState(inputList, submitButton, classesModification.inactiveButtonClass);
       inputElement.addEventListener('input', function () {
         checkInputValidity(formPopup, inputElement, classesModification);
         toggleButtonState(inputList, submitButton, classesModification.inactiveButtonClass);

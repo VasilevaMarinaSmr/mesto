@@ -40,10 +40,10 @@
         <form name="update-info" class="form-popup form-popup_edit-profile" novalidate>
           <fieldset class="form-popup__profile-info">
             <input name="update-name" type="text" id="name" minlength="2" maxlength="40"
-            class="form-popup__text form-popup__text_modified_name">
+            class="form-popup__text form-popup__text_modified_name" required>
             <span id="name-error" class="form-popup__error name-error"></span>
             <input name="update-profession" type="text" id="profession" minlength="2" maxlength="200"
-              class="form-popup__text form-popup__text_modified_profession">
+              class="form-popup__text form-popup__text_modified_profession" required>
             <span id="profession-error" class="form-popup__error profession-error"></span>
           </fieldset>
           <button class="form-popup__save" type="submit">Сохранить</button>
@@ -58,7 +58,7 @@
         <form name="update-image" class="form-popup form-popup_add-image" novalidate>
           <fieldset class="form-popup__profile-info">
             <input name="update-image-name" type="text" minlength="2" maxlength="30" id="place"
-            class="form-popup__text form-popup__text_modified_image" placeholder="Название">
+            class="form-popup__text form-popup__text_modified_image" placeholder="Название" required>
             <span id="plaсe-error" class="form-popup__error place-error"></span>
             <input name="update-link" type="url" id="link" required
             class="form-popup__text form-popup__text_modified_link"
