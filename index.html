@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
     <link rel="stylesheet" type="text/css" href="./pages/index.css">
+    <script src="./scripts/constants.js" defer></script>
+    <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
   </head>
   <body class="body">
     <div class="page">
@@ -37,13 +40,13 @@
       <div class="popup__container">
         <button class="popup__button-close popup__button-close_edit_profile" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="update-info" class="form-popup form-popup_edit-profile" novalidate>
+        <form name="update-info" class="form-popup form-popup_edit-profile"  novalidate>
           <fieldset class="form-popup__profile-info">
             <input name="update-name" type="text" id="name" minlength="2" maxlength="40"
-            class="form-popup__text form-popup__text_modified_name" required>
+            class="form-popup__text form-popup__text_modified_name" placeholder="Имя" required>
             <span id="name-error" class="form-popup__error name-error"></span>
             <input name="update-profession" type="text" id="profession" minlength="2" maxlength="200"
-              class="form-popup__text form-popup__text_modified_profession" required>
+              class="form-popup__text form-popup__text_modified_profession" placeholder="О себе" required>
             <span id="profession-error" class="form-popup__error profession-error"></span>
           </fieldset>
           <button class="form-popup__save" type="submit">Сохранить</button>
@@ -84,11 +87,9 @@
         <img class="element__image" src="#" alt="Место" >
         <div class="element__info-container">
           <h2 class="element__name"></h2>
-          <button type="button" class="element__like"></button>
+          <button type="button" class="element__like" aria-label="Нравится" ></button>
         </div>
       </li>
     </template>
-  <script src="./scripts/main.js" defer></script>
-  <script src="./scripts/validate.js" defer></script>
   </body>
 </html>
