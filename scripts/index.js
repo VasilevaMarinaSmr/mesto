@@ -103,9 +103,9 @@ function fillCards(cards) {
 
 function getProfileInfo() {
   openPopup(popupWindowEditProfile);
-  profileValidation.resetValidation();
   popupInputName.value = profileName.textContent;
   popupInputProfession.value = profileProfession.textContent;
+  profileValidation.resetValidation();
 }
 
 function handleFormEditProfileSubmit(evt) {
@@ -122,7 +122,6 @@ function handleFormАddImageSubmit(evt) {
   addCard(imageName, link);
   popupFormAddImage.reset();
   const btnSaveAddImage = popupFormAddImage.querySelector(".form-popup__save");
-  btnSaveAddImage.classList.add("form-popup__save_disabled");
   closePopup(popupWindowAddImage);
 }
 

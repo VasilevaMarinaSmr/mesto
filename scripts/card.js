@@ -8,7 +8,7 @@ export class Card {
 
   _setEventListeners() {
     this._btnLike.addEventListener("click",  () => {
-      this._btnLike.classList.toggle("element__like_active");
+      this._handleLikeButton();
     });
     this._element.querySelector(".element__trash").addEventListener('click', () => {
       this._handleTrashButton();
@@ -21,6 +21,10 @@ export class Card {
   _handleTrashButton() {
     this._element.remove();
     this._element = null;
+  }
+
+  _handleLikeButton() {
+    this._btnLike.classList.toggle("element__like_active");
   }
 
   _getTemplate() {
