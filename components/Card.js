@@ -1,9 +1,9 @@
 export class Card {
-  constructor(name, link, templateSelector, showPopupBigPicture) {
+  constructor(name, link, templateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
-    this._showPopupBigPicture = showPopupBigPicture;
+    this._handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
@@ -14,7 +14,7 @@ export class Card {
       this._handleTrashButton();
     });
     this._btnImage.addEventListener("click", () =>
-      this._showPopupBigPicture(this._name, this._link)
+      this._handleCardClick(this._name, this._link)
     );
   }
 

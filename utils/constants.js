@@ -25,6 +25,20 @@ export const initialCards = [
   }
 ];
 
+export const popupFormEditProfile = document.querySelector(".form-popup_edit-profile");
+export const popupFormAddImage = document.querySelector(".form-popup_add-image");
+export const popupInputName = document.querySelector(
+  ".form-popup__text_modified_name"
+);
+export const popupInputProfession = document.querySelector(
+  ".form-popup__text_modified_profession"
+);
+export const profileOpenPopupEditProfileBtn = document.querySelector(
+  ".profile__edit-button"
+);
+export const profileOpenPopupAddImageBtn = document.querySelector(
+  ".profile__add-button"
+);
 
 export const validationConfig = {
   formSelector: ".form-popup",
