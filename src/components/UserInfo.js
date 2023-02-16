@@ -1,6 +1,5 @@
-
-export class UserInfo{
-  constructor(nameSelector, professionSelector){
+export class UserInfo {
+  constructor(nameSelector, professionSelector) {
     this._profileName = document.querySelector(nameSelector);
     this._profileProfession = document.querySelector(professionSelector);
   }
@@ -12,7 +11,7 @@ export class UserInfo{
     return userInfo;
   }
 
-  setUserInfo(inputName, InputProfession){
+  setUserInfo(inputName, InputProfession) {
     this._profileName.textContent = inputName;
     this._profileProfession.textContent = InputProfession;
   }

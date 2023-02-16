@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" type="text/css" href="./pages/index.css">
-    <script type="module" src="./pages/index.js" defer></script>
   </head>
   <body class="body">
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/header-logo.svg" alt="Место Россия">
+        <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="Место Россия">
       </header>
       <main class="content">
         <section class="profile">
-          <img class="profile__avatar" src="./images/avatar-cousteau.jpg" alt="Фотография Кусто">
+          <img class="profile__avatar" src="<%=require('./images/avatar-cousteau.jpg')%>" alt="Фотография Кусто">
           <div class="profile__info">
             <div class="profile__container">
               <h1 class="profile__name">Жак-Ив Кусто</h1>

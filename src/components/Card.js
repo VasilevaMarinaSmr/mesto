@@ -7,12 +7,14 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._btnLike.addEventListener("click",  () => {
+    this._btnLike.addEventListener("click", () => {
       this._handleLikeButton();
     });
-    this._element.querySelector(".element__trash").addEventListener('click', () => {
-      this._handleTrashButton();
-    });
+    this._element
+      .querySelector(".element__trash")
+      .addEventListener("click", () => {
+        this._handleTrashButton();
+      });
     this._btnImage.addEventListener("click", () =>
       this._handleCardClick(this._name, this._link)
     );
@@ -30,14 +32,13 @@ export class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._templateSelector)
-      .content
-      .querySelector('.element')
+      .content.querySelector(".element")
       .cloneNode(true);
     return cardElement;
   }
 
   generate() {
-    this._element = this._getTemplate()
+    this._element = this._getTemplate();
     this._btnLike = this._element.querySelector(".element__like");
     this._btnImage = this._element.querySelector(".element__image");
     this._btnImage.src = this._link;
