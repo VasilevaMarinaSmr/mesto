@@ -38,7 +38,7 @@ const cardsContainer = new Section(
     items: initialCards,
     renderer: (item) => {
       const cardElement = createElementCard(item.name, item.link);
-      cardsContainer.prepItem(cardElement);
+      cardsContainer.prependItem(cardElement);
     },
   },
   ".elements__list"
@@ -49,20 +49,10 @@ const handleFormEditProfileSubmit = (changingValues) => {
 };
 
 const handleFormАddImageSubmit = (changingValues) => {
-  const infoCard = [{ name: changingValues.place, link: changingValues.link }];
   popupAddCard.close();
-  const newCard = new Section(
-    {
-      items: infoCard,
-      renderer: (item) => {
-        const cardElement = createElementCard(item.name, item.link);
-        newCard.prepItem(cardElement);
-      },
-    },
-    ".elements__list"
-  );
-  newCard.renderItems();
-};
+  const newCard = createElementCard(changingValues.place, changingValues.link);
+  cardsContainer.prependItem(newCard);
+}
 
 profileOpenPopupEditProfileBtn.addEventListener("click", () => {
   const userInfoCurentValues = userInfo.getUserInfo();

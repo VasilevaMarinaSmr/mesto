@@ -5,7 +5,7 @@ export class UserInfo {
   }
 
   getUserInfo() {
-    let userInfo = {};
+    const userInfo = {};
     userInfo.name = this._profileName.textContent;
     userInfo.profession = this._profileProfession.textContent;
     return userInfo;
