@@ -52,7 +52,7 @@ const handleFormАddImageSubmit = (changingValues) => {
   popupAddCard.close();
   const newCard = createElementCard(changingValues.place, changingValues.link);
   cardsContainer.prependItem(newCard);
-}
+};
 
 profileOpenPopupEditProfileBtn.addEventListener("click", () => {
   const userInfoCurentValues = userInfo.getUserInfo();
