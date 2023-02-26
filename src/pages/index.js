@@ -1,7 +1,6 @@
 import "./index.css";
 
 import {
-  initialCards,
   popupFormAddImage,
   popupFormEditProfile,
   popupInputName,
@@ -24,10 +23,9 @@ const handleCardClick = (name, link) => {
   popupWithImage.open(name, link);
 };
 
-function createElementCard(name, link) {
+function createElementCard(cardProperties) {
   const cardElement = new Card(
-    name,
-    link,
+    cardProperties,
     ".element-template",
     handleCardClick
   );
@@ -37,22 +35,29 @@ function createElementCard(name, link) {
 
 const cardsContainer = new Section(
   {
-    items: initialCards,
-    renderer: (item) => {
-      const cardElement = createElementCard(item.name, item.link);
-      cardsContainer.prependItem(cardElement);
+    renderer: (cardProperties) => {
+    const cardElement = createElementCard(cardProperties);
+    cardsContainer.prependItem(cardElement);
     },
   },
   ".elements__list"
 );
-cardsContainer.renderItems();
+
+
+const handleInitialCards = (initialCards) => {
+  cardsContainer.renderItems(initialCards)
+
+}
+
+
+
 const handleFormEditProfileSubmit = (changingValues) => {
   userInfo.setUserInfo(changingValues.name, changingValues.profession);
 };
 
 const handleFormАddImageSubmit = (changingValues) => {
   popupAddCard.close();
-  const newCard = createElementCard(changingValues.place, changingValues.link);
+  const newCard = createElementCard({name:changingValues.place, link:changingValues.link});
   cardsContainer.prependItem(newCard);
 };
 
@@ -106,11 +111,17 @@ const api = new Api({
 });
 
 
-Promise.all([api.getUserInfo(),])
-  .then(([data,]) => {
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([data, initialCards]) => {
     profileAvatar.src = data.avatar
     profileName.textContent = data.name
     profileProfession.textContent = data.about
     userId = data._id
+
+
+    handleInitialCards(initialCards);
+
+
+
   })
   .catch(err => console.log(err));

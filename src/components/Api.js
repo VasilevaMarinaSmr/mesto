@@ -18,4 +18,20 @@ export class Api {
       console.log(err);
     })
   }
+
+
+  getInitialCards() {
+    return fetch(`${this.baseUrl}/cards`, {
+      headers: this.headers,
+    })
+    .then((response) => {
+      if (!response.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`);
+      }
+      return response.json()
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
 }
