@@ -44,6 +44,18 @@ export const profileOpenPopupAddImageBtn = document.querySelector(
   ".profile__add-button"
 );
 
+export const profileAvatar = document.querySelector(
+  ".profile__avatar"
+);
+
+export const profileName = document.querySelector(
+  ".profile__name"
+);
+
+export const profileProfession = document.querySelector(
+  ".profile__profession"
+);
+
 export const validationConfig = {
   formSelector: ".form-popup",
   inputSelector: ".form-popup__text",

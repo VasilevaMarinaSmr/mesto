@@ -5,18 +5,20 @@ import {
   popupFormAddImage,
   popupFormEditProfile,
   popupInputName,
-  popupInputProfession,
-  profileOpenPopupAddImageBtn,
-  profileOpenPopupEditProfileBtn,
-  validationConfig
+  popupInputProfession, profileAvatar,
+  profileName, profileOpenPopupAddImageBtn,
+  profileOpenPopupEditProfileBtn, profileProfession, validationConfig
 } from "../utils/constants.js";
 
+import { Api } from "../components/Api.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
+
+let userId;
 
 const handleCardClick = (name, link) => {
   popupWithImage.open(name, link);
@@ -93,3 +95,22 @@ const newCardValidation = new FormValidator(
 
 profileValidation.enableValidation();
 newCardValidation.enableValidation();
+
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
+  headers: {
+    authorization: 'aa8e790a-3250-4e42-83f6-285a574f94a9',
+    'Content-Type': 'application/json'
+  }
+});
+
+
+Promise.all([api.getUserInfo(),])
+  .then(([data,]) => {
+    profileAvatar.src = data.avatar
+    profileName.textContent = data.name
+    profileProfession.textContent = data.about
+    userId = data._id
+  })
+  .catch(err => console.log(err));
