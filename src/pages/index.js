@@ -48,20 +48,26 @@ const handleInitialCards = (initialCards) => {
   cardsContainer.renderItems(initialCards)
 }
 
-const updateNameProfession = (changingValues) => {
+const showNewProfile = (changingValues) => {
   userInfo.setUserInfo(changingValues.name, changingValues.about);
 }
 
 const handleFormEditProfileSubmit = (changingValues) => {
   api.updateProfile(changingValues.name, changingValues.profession)
-  .then(res => updateNameProfession(res))
+  .then(res => showNewProfile(res))
   .catch(err => console.log(err))
 }
 
-const handleFormАddImageSubmit = (changingValues) => {
-  popupAddCard.close();
-  const newCard = createElementCard({name:changingValues.place, link:changingValues.link});
+const showNewCard = (changingValues) =>{
+  const newCard = createElementCard({name:changingValues.name, link:changingValues.link});
   cardsContainer.prependItem(newCard);
+  popupAddCard.close();
+}
+
+const handleFormАddImageSubmit = (changingValues) => {
+  api.createCard({name:changingValues.place, link:changingValues.link})
+  .then(res => showNewCard(res))
+  .catch(err => console.log(err))
 };
 
 profileOpenPopupEditProfileBtn.addEventListener("click", () => {

@@ -54,4 +54,28 @@ export class Api {
       console.log(err);
      })
   }
+
+  createCard(cardProperties) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: cardProperties.name,
+        link: cardProperties.link
+      })
+    })
+    .then((response) => {
+      if (!response.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`);
+      }
+      return response.json()
+    })
+    .catch((err) => {
+      console.log(err);
+     })
+  }
+
+
+
+
 }
