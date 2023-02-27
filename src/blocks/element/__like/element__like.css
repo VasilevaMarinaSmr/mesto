@@ -1,7 +1,7 @@
 .element__like {
   all: unset;
   border: none;
-  margin: 5px 5px 1px 0;
+  margin: 0;
   background-image: url(../../../images/herz.svg);
   width: 22px;
   height: 19px;

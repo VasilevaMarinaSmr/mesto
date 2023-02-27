@@ -2,6 +2,7 @@ export class Card {
   constructor(cardProperties, templateSelector, handleCardClick) {
     this._name = cardProperties.name;
     this._link = cardProperties.link;
+    this._whoLikedIt = cardProperties.likes;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -25,6 +26,17 @@ export class Card {
     this._element = null;
   }
 
+  _showOrHideNumberOfLike(whoLikedIt){
+    const countLike = whoLikedIt.length;
+    if (countLike > 0){
+      this._elementLikeCount.textContent = countLike;
+      this._elementLikeCount.classList.add('element__likes-number_active');
+    } else {
+      this._elementLikeCount.classList.remove('element__likes-number_active');
+    }
+
+  }
+
   _handleLikeButton() {
     this._btnLike.classList.toggle("element__like_active");
   }
@@ -41,9 +53,11 @@ export class Card {
     this._element = this._getTemplate();
     this._btnLike = this._element.querySelector(".element__like");
     this._btnImage = this._element.querySelector(".element__image");
+    this._elementLikeCount = this._element.querySelector('.element__like-count')
     this._btnImage.src = this._link;
     this._btnImage.alt = this._name;
     this._element.querySelector(".element__name").textContent = this._name;
+    this._showOrHideNumberOfLike(this._whoLikedIt);
     this._setEventListeners();
     return this._element;
   }
