@@ -46,14 +46,17 @@ const cardsContainer = new Section(
 
 const handleInitialCards = (initialCards) => {
   cardsContainer.renderItems(initialCards)
-
 }
 
-
+const updateNameProfession = (changingValues) => {
+  userInfo.setUserInfo(changingValues.name, changingValues.about);
+}
 
 const handleFormEditProfileSubmit = (changingValues) => {
-  userInfo.setUserInfo(changingValues.name, changingValues.profession);
-};
+  api.updateProfile(changingValues.name, changingValues.profession)
+  .then(res => updateNameProfession(res))
+  .catch(err => console.log(err))
+}
 
 const handleFormАddImageSubmit = (changingValues) => {
   popupAddCard.close();
@@ -117,11 +120,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     profileName.textContent = data.name
     profileProfession.textContent = data.about
     userId = data._id
-
-
     handleInitialCards(initialCards);
-
-
-
   })
   .catch(err => console.log(err));
