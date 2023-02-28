@@ -38,7 +38,6 @@ export class Card {
     } else {
       this._elementLikeCount.classList.remove('element__likes-number_active');
     }
-
   }
 
   _showLikeInCard(){
@@ -58,7 +57,6 @@ export class Card {
     }
   }
 
-
   addingLike(whoLikedIt) {
     this._showOrHideNumberOfLike(whoLikedIt);
     this._showLikeInCard();
@@ -68,11 +66,6 @@ export class Card {
     this._showOrHideNumberOfLike(whoLikedIt);
     this._hideLikeInCard()
   }
-
-
-
-
-
 
   _getTemplate() {
     const cardElement = document
@@ -92,7 +85,6 @@ export class Card {
     this._element.querySelector(".element__name").textContent = this._name;
     this._showOrHideNumberOfLike(this._whoLikedIt);
     this._whoLikedIt.map(a => a._id).includes(this._userId) && this._showLikeInCard();
-
     this._setEventListeners();
     return this._element;
   }
