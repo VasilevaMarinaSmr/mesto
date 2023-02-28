@@ -1,10 +1,11 @@
 export class Card {
-  constructor(cardProperties, templateSelector, handleCardClick) {
+  constructor(cardProperties, templateSelector, handleCardClick, userId, addLike, removeLike) {
     this._name = cardProperties.name;
     this._link = cardProperties.link;
     this._whoLikedIt = cardProperties.likes;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._userId = userId;
   }
 
   _setEventListeners() {
@@ -58,6 +59,8 @@ export class Card {
     this._btnImage.alt = this._name;
     this._element.querySelector(".element__name").textContent = this._name;
     this._showOrHideNumberOfLike(this._whoLikedIt);
+    this._whoLikedIt.includes(this._userId) && this._handleLikeButton();
+ 
     this._setEventListeners();
     return this._element;
   }

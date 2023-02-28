@@ -23,11 +23,36 @@ const handleCardClick = (name, link) => {
   popupWithImage.open(name, link);
 };
 
+
+const addLike = (card) => {
+  api.addLike(card)
+    .then(res => {
+      card.putLike(res.likes);
+    })
+    .catch(err => console.log(err));
+}
+
+
+
+const removeLike = (cardProperties) => {
+  api.removeLike(cardProperties.cardId)
+    .then(res => {
+      cardProperties.removeLike(res.likes);
+    })
+    .catch(err => console.log(err));
+}
+
+
+
+
+
+
 function createElementCard(cardProperties) {
   const cardElement = new Card(
     cardProperties,
     ".element-template",
-    handleCardClick
+    handleCardClick, 
+    userId
   );
   const card = cardElement.generate();
   return card;
