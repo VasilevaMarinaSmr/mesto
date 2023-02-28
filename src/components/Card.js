@@ -6,6 +6,9 @@ export class Card {
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._userId = userId;
+    this._addLike = addLike;
+    this._removeLike = removeLike;
+    this.id = cardProperties._id;
   }
 
   _setEventListeners() {
@@ -38,9 +41,38 @@ export class Card {
 
   }
 
-  _handleLikeButton() {
-    this._btnLike.classList.toggle("element__like_active");
+  _showLikeInCard(){
+    this._btnLike.classList.add("element__like_active");
   }
+
+  _hideLikeInCard(){
+    this._btnLike.classList.remove("element__like_active");
+  }
+
+  _handleLikeButton() {
+    if (this._btnLike.classList.contains("element__like_active")) {
+      this._removeLike(this);
+    }
+    else {
+      this._addLike(this);
+    }
+  }
+
+
+  addingLike(whoLikedIt) {
+    this._showOrHideNumberOfLike(whoLikedIt);
+    this._showLikeInCard();
+  }
+
+  removingLike(whoLikedIt) {
+    this._showOrHideNumberOfLike(whoLikedIt);
+    this._hideLikeInCard()
+  }
+
+
+
+
+
 
   _getTemplate() {
     const cardElement = document
@@ -59,8 +91,8 @@ export class Card {
     this._btnImage.alt = this._name;
     this._element.querySelector(".element__name").textContent = this._name;
     this._showOrHideNumberOfLike(this._whoLikedIt);
-    this._whoLikedIt.includes(this._userId) && this._handleLikeButton();
- 
+    this._whoLikedIt.map(a => a._id).includes(this._userId) && this._showLikeInCard();
+
     this._setEventListeners();
     return this._element;
   }

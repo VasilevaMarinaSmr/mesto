@@ -72,7 +72,7 @@ export class Api {
     })
     .catch((err) => {
       console.log(err);
-     })     
+     })
   }
 
   addLike(cardId) {

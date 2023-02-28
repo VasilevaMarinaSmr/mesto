@@ -25,34 +25,31 @@ const handleCardClick = (name, link) => {
 
 
 const addLike = (card) => {
-  api.addLike(card)
+  api.addLike(card.id)
     .then(res => {
-      card.putLike(res.likes);
+      card.addingLike(res.likes);
     })
     .catch(err => console.log(err));
 }
 
-
-
-const removeLike = (cardProperties) => {
-  api.removeLike(cardProperties.cardId)
+const removeLike = (card) => {
+  api.removeLike(card.id)
     .then(res => {
-      cardProperties.removeLike(res.likes);
+      card.removingLike(res.likes);
     })
     .catch(err => console.log(err));
 }
-
-
-
-
 
 
 function createElementCard(cardProperties) {
   const cardElement = new Card(
     cardProperties,
     ".element-template",
-    handleCardClick, 
-    userId
+    handleCardClick,
+    userId,
+    addLike,
+    removeLike
+
   );
   const card = cardElement.generate();
   return card;
