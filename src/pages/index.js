@@ -12,6 +12,7 @@ import {
 import { Api } from "../components/Api.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
+import { PopupConfirmation } from "../components/PopupConfirmation.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Section } from "../components/Section.js";
@@ -40,6 +41,11 @@ const removeLike = (card) => {
     .catch(err => console.log(err));
 }
 
+const openPopupConfirmation = (element, cardId) => {
+
+
+}
+
 
 function createElementCard(cardProperties) {
   const cardElement = new Card(
@@ -48,8 +54,8 @@ function createElementCard(cardProperties) {
     handleCardClick,
     userId,
     addLike,
-    removeLike
-
+    removeLike,
+    openPopupConfirmation
   );
   const card = cardElement.generate();
   return card;
@@ -81,7 +87,7 @@ const handleFormEditProfileSubmit = (changingValues) => {
 }
 
 const showNewCard = (changingValues) =>{
-  const newCard = createElementCard({name:changingValues.name, link:changingValues.link});
+  const newCard = createElementCard(changingValues);
   cardsContainer.prependItem(newCard);
   popupAddCard.close();
 }
@@ -105,6 +111,8 @@ profileOpenPopupAddImageBtn.addEventListener("click", () => {
   popupAddCard.open();
 });
 
+
+
 const popupWithImage = new PopupWithImage(".popup_form_big-picture");
 
 const popupEditProfile = new PopupWithForm(
@@ -118,6 +126,11 @@ const popupAddCard = new PopupWithForm(
   ".popup_form_add-image",
   handleFormАddImageSubmit
 );
+
+const PopupConfirm = new  PopupConfirmation(
+  "popup_form_delete",
+  handleSubmitConfirmation
+)
 
 const profileValidation = new FormValidator(
   validationConfig,

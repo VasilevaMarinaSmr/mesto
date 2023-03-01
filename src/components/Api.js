@@ -96,7 +96,7 @@ export class Api {
       method: 'DELETE',
       headers: this.headers
     })
-    .then((response) => {
+    .then((response) => { 
       if (!response.ok) {
         return Promise.reject(`Ошибка: ${res.status}`);
       }
@@ -106,5 +106,25 @@ export class Api {
       console.log(err);
     })
   }
+
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: this.headers
+    })
+    .then((response) => { 
+      if (!response.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`);
+      }
+      return response.json()
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+
+
+
 
 }

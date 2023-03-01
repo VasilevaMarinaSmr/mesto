@@ -1,5 +1,5 @@
 export class Card {
-  constructor(cardProperties, templateSelector, handleCardClick, userId, addLike, removeLike) {
+  constructor(cardProperties, templateSelector, handleCardClick, userId, addLike, removeLike, openPopupConfirmation) {
     this._name = cardProperties.name;
     this._link = cardProperties.link;
     this._whoLikedIt = cardProperties.likes;
@@ -9,6 +9,8 @@ export class Card {
     this._addLike = addLike;
     this._removeLike = removeLike;
     this.id = cardProperties._id;
+    this._owner = cardProperties.owner._id;
+    this._openPopupConfirmation = openPopupConfirmation;
   }
 
   _setEventListeners() {
@@ -26,8 +28,7 @@ export class Card {
   }
 
   _handleTrashButton() {
-    this._element.remove();
-    this._element = null;
+    this._openPopupConfirmation(this._element, this.id)
   }
 
   _showOrHideNumberOfLike(whoLikedIt){
@@ -46,6 +47,11 @@ export class Card {
 
   _hideLikeInCard(){
     this._btnLike.classList.remove("element__like_active");
+  }
+
+  _showTrachBtn(){
+    this._btnDeleteCard.classList.add("element__trash_show")
+
   }
 
   _handleLikeButton() {
@@ -77,6 +83,7 @@ export class Card {
 
   generate() {
     this._element = this._getTemplate();
+    this._btnDeleteCard = this._element.querySelector(".element__trash");
     this._btnLike = this._element.querySelector(".element__like");
     this._btnImage = this._element.querySelector(".element__image");
     this._elementLikeCount = this._element.querySelector('.element__like-count')
@@ -85,6 +92,7 @@ export class Card {
     this._element.querySelector(".element__name").textContent = this._name;
     this._showOrHideNumberOfLike(this._whoLikedIt);
     this._whoLikedIt.map(a => a._id).includes(this._userId) && this._showLikeInCard();
+    this._owner === this._userId && this._showTrachBtn();
     this._setEventListeners();
     return this._element;
   }
