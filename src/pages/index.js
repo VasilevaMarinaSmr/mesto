@@ -42,10 +42,18 @@ const removeLike = (card) => {
 }
 
 const openPopupConfirmation = (element, cardId) => {
-
-
+  popupConfirm.open()
+  popupConfirm.callbackDeleteCard(() => {
+    api.deleteCard(cardId)
+      .then(() =>{
+        element.remove();
+        element = null;
+      })
+      .catch((err) => {
+        console.log(err);
+    })
+  })
 }
-
 
 function createElementCard(cardProperties) {
   const cardElement = new Card(
@@ -111,8 +119,6 @@ profileOpenPopupAddImageBtn.addEventListener("click", () => {
   popupAddCard.open();
 });
 
-
-
 const popupWithImage = new PopupWithImage(".popup_form_big-picture");
 
 const popupEditProfile = new PopupWithForm(
@@ -127,10 +133,7 @@ const popupAddCard = new PopupWithForm(
   handleFormАddImageSubmit
 );
 
-const PopupConfirm = new  PopupConfirmation(
-  "popup_form_delete",
-  handleSubmitConfirmation
-)
+const popupConfirm = new  PopupConfirmation(".popup_form_delete")
 
 const profileValidation = new FormValidator(
   validationConfig,

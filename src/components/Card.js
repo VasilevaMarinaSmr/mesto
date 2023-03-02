@@ -20,16 +20,13 @@ export class Card {
     this._element
       .querySelector(".element__trash")
       .addEventListener("click", () => {
-        this._handleTrashButton();
+        this._openPopupConfirmation(this._element, this.id);
       });
     this._btnImage.addEventListener("click", () =>
       this._handleCardClick(this._name, this._link)
     );
   }
 
-  _handleTrashButton() {
-    this._openPopupConfirmation(this._element, this.id)
-  }
 
   _showOrHideNumberOfLike(whoLikedIt){
     const countLike = whoLikedIt.length;
@@ -51,7 +48,6 @@ export class Card {
 
   _showTrachBtn(){
     this._btnDeleteCard.classList.add("element__trash_show")
-
   }
 
   _handleLikeButton() {
