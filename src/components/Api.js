@@ -10,7 +10,7 @@ export class Api {
     })
     .then((response) => {
       if (!response.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Ошибка: ${response.status}`);
       }
       return response.json()
     })
@@ -26,7 +26,7 @@ export class Api {
     })
     .then((response) => {
       if (!response.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Ошибка: ${response.status}`);
       }
       return response.json()
     })
@@ -46,7 +46,7 @@ export class Api {
     })
     .then((response) => {
       if (!response.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Ошибка: ${response.status}`);
       }
       return response.json()
     })
@@ -66,7 +66,7 @@ export class Api {
     })
     .then((response) => {
       if (!response.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Ошибка: ${response.status}`);
       }
       return response.json()
     })
@@ -82,7 +82,7 @@ export class Api {
     })
     .then((response) => {
       if (!response.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Ошибка: ${response.status}`);
       }
       return response.json()
     })
@@ -98,7 +98,7 @@ export class Api {
     })
     .then((response) => {
       if (!response.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Ошибка: ${response.status}`);
       }
       return response.json()
     })
@@ -114,7 +114,7 @@ export class Api {
     })
     .then((response) => {
       if (!response.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Ошибка: ${response.status}`);
       }
       return response.json()
     })
@@ -122,6 +122,27 @@ export class Api {
       console.log(err);
     })
   }
+
+  changeAvatar(link) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: link
+      })
+    })
+    .then((response) => {
+      if (!response.ok) {
+        return Promise.reject(`Ошибка: ${response.status}`);
+      }
+      return response.json()
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+
 
 
 

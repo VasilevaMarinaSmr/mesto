@@ -56,6 +56,15 @@ export const profileProfession = document.querySelector(
   ".profile__profession"
 );
 
+export const popupUpdateAvatar = document.querySelector(
+  ".popup_form_update-avatar"
+);
+
+export const profileGroupAvatar = document.querySelector(
+  ".profile__group-avatar"
+);
+
+
 export const validationConfig = {
   formSelector: ".form-popup",
   inputSelector: ".form-popup__text",

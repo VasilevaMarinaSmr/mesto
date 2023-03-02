@@ -1,11 +1,9 @@
 import "./index.css";
 
 import {
-  popupFormAddImage,
-  popupFormEditProfile,
+  popupFormAddImage, popupFormEditProfile,
   popupInputName,
-  popupInputProfession, profileAvatar,
-  profileName, profileOpenPopupAddImageBtn,
+  popupInputProfession, profileAvatar, profileGroupAvatar, profileName, profileOpenPopupAddImageBtn,
   profileOpenPopupEditProfileBtn, profileProfession, validationConfig
 } from "../utils/constants.js";
 
@@ -85,7 +83,8 @@ const handleInitialCards = (initialCards) => {
 }
 
 const showNewProfile = (changingValues) => {
-  userInfo.setUserInfo(changingValues.name, changingValues.about);
+  userInfo.setUserInfo(changingValues.name, 
+    changingValues.about, changingValues.avatar);
 }
 
 const handleFormEditProfileSubmit = (changingValues) => {
@@ -93,6 +92,13 @@ const handleFormEditProfileSubmit = (changingValues) => {
   .then(res => showNewProfile(res))
   .catch(err => console.log(err))
 }
+
+const handleAvatarChanging = (changingValues) => {
+  api.changeAvatar(changingValues.link)
+  .then(res => showNewProfile(res))
+  .catch(err => console.log(err))
+}
+
 
 const showNewCard = (changingValues) =>{
   const newCard = createElementCard(changingValues);
@@ -119,6 +125,13 @@ profileOpenPopupAddImageBtn.addEventListener("click", () => {
   popupAddCard.open();
 });
 
+
+
+profileGroupAvatar.addEventListener("click", () => {
+  popupAvatarChange.open();
+  profileValidation.resetValidation();
+});
+
 const popupWithImage = new PopupWithImage(".popup_form_big-picture");
 
 const popupEditProfile = new PopupWithForm(
@@ -126,7 +139,9 @@ const popupEditProfile = new PopupWithForm(
   handleFormEditProfileSubmit
 );
 
-const userInfo = new UserInfo(".profile__name", ".profile__profession");
+const popupAvatarChange = new PopupWithForm(".popup_form_update-avatar", handleAvatarChanging)
+
+const userInfo = new UserInfo(".profile__name", ".profile__profession", ".profile__avatar");
 
 const popupAddCard = new PopupWithForm(
   ".popup_form_add-image",
@@ -134,6 +149,9 @@ const popupAddCard = new PopupWithForm(
 );
 
 const popupConfirm = new  PopupConfirmation(".popup_form_delete")
+
+
+
 
 const profileValidation = new FormValidator(
   validationConfig,
