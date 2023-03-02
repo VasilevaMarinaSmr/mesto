@@ -88,10 +88,19 @@
       </div>
     </div>
 
-
-
-
-
+    <div class="popup popup_form_update-avatar">
+      <div class="popup__container">
+        <button class="popup__button-close popup__button-close_add_image" type="button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form name="update-avatar" class="form-popup form-popup_update-avatar"  novalidate>
+          <input name="update-link" type="url" id="link-avatar" required
+          class="form-popup__text form-popup__text_modified_link"
+          placeholder="Ссылка на картинку">
+          <span id="link-avatar-error" class="form-popup__error link-error"></span>
+          <button class="form-popup__save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
 
     <template class="element-template">
       <li class="element">

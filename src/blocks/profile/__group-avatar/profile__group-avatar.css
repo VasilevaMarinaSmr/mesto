@@ -2,8 +2,6 @@
   position: relative;
   cursor: pointer;
 }
-
-
-.profile__group:hover .profile__avatar-edit {
+.profile__group-avatar:hover .profile__avatar-edit {
   display: block;
 }

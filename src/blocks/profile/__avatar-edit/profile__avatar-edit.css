@@ -1,16 +1,14 @@
 .profile__avatar-edit {
   position: absolute;
-  background-image: url(../../../images/EditAvatar.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  left: 47px;
-  top: 47px;
-  max-width: 26px;
+  width: 26px;
   height: 26px;
-  opacity: 1;
-  transition: .5s;
-  visibility: visible;
+  top: 47px;
+  left: 47px;
+  background-image: url(../../../images/EditAvatar.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: none;
   z-index: 999;
-  display: block;
 
 }
