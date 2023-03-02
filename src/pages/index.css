@@ -46,6 +46,7 @@
 @import url(../blocks/form-popup/__text/form-popup__text.css);
 @import url(../blocks/form-popup/__text/_type_error/form-popup__text_type_error.css);
 @import url(../blocks/form-popup/__save/form-popup__save.css);
+@import url(../blocks/form-popup/__save/_margin_small/form-popup__save_margin_small.css);
 @import url(../blocks/form-popup/__save/_disabled/form-popup__save_disabled.css);
 @import url(../blocks/form-popup/__error/form-popup__error.css);
 @import url(../blocks/form-popup/__error/_visible/form-popup__error_visible.css);

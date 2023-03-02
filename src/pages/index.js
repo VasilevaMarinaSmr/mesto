@@ -1,10 +1,21 @@
 import "./index.css";
 
 import {
-  popupFormAddImage, popupFormEditProfile,
+  btnPopupSaveAddImage,
+  btnPopupSaveEditProfile,
+  btnPopupSaveUpdateAvatar,
+  popupFormAddImage,
+  popupFormEditProfile,
+  popupFormUpdateAvatar,
   popupInputName,
-  popupInputProfession, profileAvatar, profileGroupAvatar, profileName, profileOpenPopupAddImageBtn,
-  profileOpenPopupEditProfileBtn, profileProfession, validationConfig
+  popupInputProfession,
+  profileAvatar,
+  profileGroupAvatar,
+  profileName,
+  profileOpenPopupAddImageBtn,
+  profileOpenPopupEditProfileBtn,
+  profileProfession,
+  validationConfig
 } from "../utils/constants.js";
 
 import { Api } from "../components/Api.js";
@@ -22,36 +33,38 @@ const handleCardClick = (name, link) => {
   popupWithImage.open(name, link);
 };
 
-
 const addLike = (card) => {
-  api.addLike(card.id)
-    .then(res => {
+  api
+    .addLike(card.id)
+    .then((res) => {
       card.addingLike(res.likes);
     })
-    .catch(err => console.log(err));
-}
+    .catch((err) => console.log(err));
+};
 
 const removeLike = (card) => {
-  api.removeLike(card.id)
-    .then(res => {
+  api
+    .removeLike(card.id)
+    .then((res) => {
       card.removingLike(res.likes);
     })
-    .catch(err => console.log(err));
-}
+    .catch((err) => console.log(err));
+};
 
 const openPopupConfirmation = (element, cardId) => {
-  popupConfirm.open()
+  popupConfirm.open();
   popupConfirm.callbackDeleteCard(() => {
-    api.deleteCard(cardId)
-      .then(() =>{
+    api
+      .deleteCard(cardId)
+      .then(() => {
         element.remove();
         element = null;
       })
       .catch((err) => {
         console.log(err);
-    })
-  })
-}
+      });
+  });
+};
 
 function createElementCard(cardProperties) {
   const cardElement = new Card(
@@ -70,46 +83,64 @@ function createElementCard(cardProperties) {
 const cardsContainer = new Section(
   {
     renderer: (cardProperties) => {
-    const cardElement = createElementCard(cardProperties);
-    cardsContainer.prependItem(cardElement);
+      const cardElement = createElementCard(cardProperties);
+      cardsContainer.addItem(cardElement);
     },
   },
   ".elements__list"
 );
 
-
 const handleInitialCards = (initialCards) => {
-  cardsContainer.renderItems(initialCards)
-}
+  cardsContainer.renderItems(initialCards);
+};
 
 const showNewProfile = (changingValues) => {
-  userInfo.setUserInfo(changingValues.name, 
-    changingValues.about, changingValues.avatar);
-}
+  userInfo.setUserInfo(
+    changingValues.name,
+    changingValues.about,
+    changingValues.avatar
+  );
+};
 
 const handleFormEditProfileSubmit = (changingValues) => {
-  api.updateProfile(changingValues.name, changingValues.profession)
-  .then(res => showNewProfile(res))
-  .catch(err => console.log(err))
-}
+  btnPopupSaveEditProfile.textContent = "Сохранение...";
+  api
+    .updateProfile(changingValues.name, changingValues.profession)
+    .then((res) => showNewProfile(res))
+    .catch((err) => console.log(err))
+    .finally(() => {
+      popupEditProfile.close();
+      btnPopupSaveEditProfile.textContent = "Сохранить";
+    });
+};
 
 const handleAvatarChanging = (changingValues) => {
-  api.changeAvatar(changingValues.link)
-  .then(res => showNewProfile(res))
-  .catch(err => console.log(err))
-}
+  btnPopupSaveUpdateAvatar.textContent = "Сохранение...";
+  api
+    .changeAvatar(changingValues.linkAvatar)
+    .then((res) => showNewProfile(res))
+    .catch((err) => console.log(err))
+    .finally(() => {
+      popupAvatarChange.close();
+      btnPopupSaveUpdateAvatar.textContent = "Сохранить";
+    });
+};
 
-
-const showNewCard = (changingValues) =>{
+const showNewCard = (changingValues) => {
   const newCard = createElementCard(changingValues);
   cardsContainer.prependItem(newCard);
-  popupAddCard.close();
-}
+};
 
 const handleFormАddImageSubmit = (changingValues) => {
-  api.createCard({name:changingValues.place, link:changingValues.link})
-  .then(res => showNewCard(res))
-  .catch(err => console.log(err))
+  btnPopupSaveAddImage.textContent = "Сохранение...";
+  api
+    .createCard({ name: changingValues.place, link: changingValues.link })
+    .then((res) => showNewCard(res))
+    .catch((err) => console.log(err))
+    .finally(() => {
+      popupAddCard.close();
+      btnPopupSaveAddImage.textContent = "Сохранить";
+    });
 };
 
 profileOpenPopupEditProfileBtn.addEventListener("click", () => {
@@ -125,11 +156,9 @@ profileOpenPopupAddImageBtn.addEventListener("click", () => {
   popupAddCard.open();
 });
 
-
-
 profileGroupAvatar.addEventListener("click", () => {
-  popupAvatarChange.open();
   profileValidation.resetValidation();
+  popupAvatarChange.open();
 });
 
 const popupWithImage = new PopupWithImage(".popup_form_big-picture");
@@ -139,19 +168,23 @@ const popupEditProfile = new PopupWithForm(
   handleFormEditProfileSubmit
 );
 
-const popupAvatarChange = new PopupWithForm(".popup_form_update-avatar", handleAvatarChanging)
+const popupAvatarChange = new PopupWithForm(
+  ".popup_form_update-avatar",
+  handleAvatarChanging
+);
 
-const userInfo = new UserInfo(".profile__name", ".profile__profession", ".profile__avatar");
+const userInfo = new UserInfo(
+  ".profile__name",
+  ".profile__profession",
+  ".profile__avatar"
+);
 
 const popupAddCard = new PopupWithForm(
   ".popup_form_add-image",
   handleFormАddImageSubmit
 );
 
-const popupConfirm = new  PopupConfirmation(".popup_form_delete")
-
-
-
+const popupConfirm = new PopupConfirmation(".popup_form_delete");
 
 const profileValidation = new FormValidator(
   validationConfig,
@@ -163,25 +196,29 @@ const newCardValidation = new FormValidator(
   popupFormAddImage
 );
 
+const newAvatarValidation = new FormValidator(
+  validationConfig,
+  popupFormUpdateAvatar
+);
+
 profileValidation.enableValidation();
 newCardValidation.enableValidation();
-
+newAvatarValidation.enableValidation();
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-60",
   headers: {
-    authorization: 'aa8e790a-3250-4e42-83f6-285a574f94a9',
-    'Content-Type': 'application/json'
-  }
+    authorization: "aa8e790a-3250-4e42-83f6-285a574f94a9",
+    "Content-Type": "application/json",
+  },
 });
-
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, initialCards]) => {
-    profileAvatar.src = data.avatar
-    profileName.textContent = data.name
-    profileProfession.textContent = data.about
-    userId = data._id
+    profileAvatar.src = data.avatar;
+    profileName.textContent = data.name;
+    profileProfession.textContent = data.about;
+    userId = data._id;
     handleInitialCards(initialCards);
   })
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));

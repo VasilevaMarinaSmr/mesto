@@ -15,7 +15,6 @@ export class UserInfo {
   setUserInfo(inputName, inputProfession, inputAvatar) {
     this._profileName.textContent = inputName;
     this._profileProfession.textContent = inputProfession;
-    this._profileAvatar.src = inputAvatar
-
+    this._profileAvatar.src = inputAvatar;
   }
 }

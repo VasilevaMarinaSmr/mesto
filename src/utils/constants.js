@@ -28,6 +28,11 @@ export const initialCards = [
 export const popupFormEditProfile = document.querySelector(
   ".form-popup_edit-profile"
 );
+
+export const popupFormUpdateAvatar = document.querySelector(
+  ".form-popup_update-avatar"
+);
+
 export const popupFormAddImage = document.querySelector(
   ".form-popup_add-image"
 );
@@ -63,6 +68,19 @@ export const popupUpdateAvatar = document.querySelector(
 export const profileGroupAvatar = document.querySelector(
   ".profile__group-avatar"
 );
+
+export const btnPopupSaveEditProfile = document.querySelector(
+  ".popup_form_edit-profile").querySelector(".form-popup__save");
+
+export const btnPopupSaveAddImage = document.querySelector(
+  ".popup_form_add-image").querySelector(".form-popup__save");
+
+export const btnPopupSaveUpdateAvatar = document.querySelector(
+  ".popup_form_update-avatar").querySelector(".form-popup__save");
+
+
+
+
 
 
 export const validationConfig = {
