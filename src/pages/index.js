@@ -9,12 +9,9 @@ import {
   popupFormUpdateAvatar,
   popupInputName,
   popupInputProfession,
-  profileAvatar,
   profileGroupAvatar,
-  profileName,
   profileOpenPopupAddImageBtn,
   profileOpenPopupEditProfileBtn,
-  profileProfession,
   validationConfig
 } from "../utils/constants.js";
 
@@ -60,6 +57,7 @@ const openPopupConfirmation = (element, cardId) => {
         element.remove();
         element = null;
       })
+      .then(() => popupConfirm.close())
       .catch((err) => {
         console.log(err);
       });
@@ -107,9 +105,9 @@ const handleFormEditProfileSubmit = (changingValues) => {
   api
     .updateProfile(changingValues.name, changingValues.profession)
     .then((res) => showNewProfile(res))
+    .then(() => popupEditProfile.close())
     .catch((err) => console.log(err))
     .finally(() => {
-      popupEditProfile.close();
       btnPopupSaveEditProfile.textContent = "Сохранить";
     });
 };
@@ -119,9 +117,9 @@ const handleAvatarChanging = (changingValues) => {
   api
     .changeAvatar(changingValues.linkAvatar)
     .then((res) => showNewProfile(res))
+    .then(() => popupAvatarChange.close())
     .catch((err) => console.log(err))
     .finally(() => {
-      popupAvatarChange.close();
       btnPopupSaveUpdateAvatar.textContent = "Сохранить";
     });
 };
@@ -136,9 +134,9 @@ const handleFormАddImageSubmit = (changingValues) => {
   api
     .createCard({ name: changingValues.place, link: changingValues.link })
     .then((res) => showNewCard(res))
+    .then(() => popupAddCard.close())
     .catch((err) => console.log(err))
     .finally(() => {
-      popupAddCard.close();
       btnPopupSaveAddImage.textContent = "Сохранить";
     });
 };
@@ -215,9 +213,7 @@ const api = new Api({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, initialCards]) => {
-    profileAvatar.src = data.avatar;
-    profileName.textContent = data.name;
-    profileProfession.textContent = data.about;
+    userInfo.setUserInfo(data.name, data.about, data.avatar);
     userId = data._id;
     handleInitialCards(initialCards);
   })

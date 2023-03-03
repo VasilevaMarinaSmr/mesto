@@ -12,12 +12,19 @@ export class PopupConfirmation extends Popup {
     this._deleteCard = deleteCard;
   }
 
+  _handleSubmit = (evt) => {
+    evt.preventDefault();
+    this._deleteCard();
+  }
+
   _setEventListeners() {
     super._setEventListeners();
-    this._btnSubmitConfirmation.addEventListener("click", (evt) => {
-      evt.preventDefault();
-      this._deleteCard();
-      this.close();
-    });
+    this._btnSubmitConfirmation.addEventListener("click",  this._handleSubmit)
+
+  }
+
+  _removeEventListeners() {
+    super._removeEventListeners()
+    this._btnSubmitConfirmation.removeEventListener("click",  this._handleSubmit)
   }
 }
